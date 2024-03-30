@@ -1,0 +1,21 @@
+//声明使用的语法版本是proto3语法
+syntax = "proto3";
+
+//指定生成目录和包名；.代表当前目录生成,service代表生成的go文件的包名
+option go_package = ".;service";
+
+//消息体，映射代码中的结构体
+message HelloRequest {
+  //定义一个字符串类型的变量， 后面的'赋值'这里代表变量在消息的位置
+  string name = 1;
+}
+
+message HelloResponse {
+  string msg = 1;
+}
+
+//定义一个服务
+service SayHello {
+  //定义rpc方法，接受参数和返回参数
+  rpc SayHello(HelloRequest) returns (HelloResponse) {}
+}
